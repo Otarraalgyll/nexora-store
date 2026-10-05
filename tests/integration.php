@@ -45,8 +45,8 @@ foreach(['/','/shop.php','/shop.php?category=2&sort=low','/shop.php?min=1000&max
 expect($guest->request('/product.php?id=999999')['status']===404,'Missing product returns 404');
 foreach(['/database.sql','/config/database.php','/storage/mail.log','/tools/router.php','/tests/integration.php','/.gitignore','/admin/_header.php'] as $path) expect(in_array($guest->request($path)['status'],[403,404]),"Private file protected: $path");
 foreach(['/admin/','/admin/products.php','/admin/orders.php','/admin/customers.php','/profile.php','/orders.php','/wishlist.php','/checkout.php'] as $path) expect($guest->request($path)['status']===302,"Authentication required: $path");
-$r=$guest->request('/api.php?action=search&q=audio'); expect(count($r['json']['products'])>=2,'Search finds product keywords');
-$r=$guest->request('/api.php?action=search&q=Clothing'); expect(count($r['json']['products'])===2,'Search finds categories');
+$r=$guest->request('/api.php?action=search&q=audio'); expect(count($r['json']['products'])>=1,'Search finds product keywords');
+$r=$guest->request('/api.php?action=search&q=Clothing'); expect(count($r['json']['products'])===6,'Search finds six clothing products');
 $r=$guest->request('/api.php?action=search&q=%27%20OR%201%3D1%20--'); expect($r['json']['products']===[],'Search treats SQL syntax as text');
 expect($guest->request('/api.php?action=quick&id=1')['json']['name']==='Aura Wireless Headphones','Quick view returns live product');
 $customer->request('/');

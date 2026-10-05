@@ -69,3 +69,15 @@ Open the store in Chrome on Android and choose **Add to Home screen → Install*
 Installation requires HTTPS on a hosted site. Local development at `http://127.0.0.1:8080` also works; keep PHP and MySQL running in Termux to use that local app. A local installation does not make the store available to other phones. GitHub stores the code but does not host this PHP/MySQL backend.
 
 The service worker caches only a public offline notice. Live products, accounts, carts, payments and orders require a connection to the server. Purchases are never queued or replayed offline. The manifest and service-worker URLs are relative to the installation, supporting both the server root and XAMPP's `/nexora-store/` folder.
+
+## Realistic sample product imagery
+
+The seeded catalog includes six AI-generated studio product photos matching the NEXORA collection. They are demo imagery, not official third-party product photographs. Generation prompts and provenance are in `docs/catalog-photography.md`.
+
+For an existing installation, after copying the new image files, run `php tools/upgrade-catalog-photos.php`. This replaces only original sample SVG image references and removes their old gallery sketches. It preserves customer accounts, orders, prices, stock and uploaded product images. Fresh installations use the updated `database.sql` automatically.
+
+The sample catalog contains 25 products across six categories. Existing installations can add the 13 extended demo entries with `php tools/expand-catalog.php`; repeat runs skip existing product names. Related sample models share the six category photographs.
+
+### Distinct catalog update
+
+The current catalog replaces the repeated models with 19 different products and locally saved images from DummyJSON, alongside the six original NEXORA samples. There are 25 active products with 25 unique main images. Source links are in `docs/catalog-sources.md`. For an older installation, run `php tools/distinct-catalog.php` after copying the files. It archives the known repeated demo listings and preserves historical orders. New imports already contain the distinct catalog; the older expansion script is not needed.

@@ -20,3 +20,12 @@
 .app-install strong{color:var(--purple)}.app-install p{font-size:.78rem;max-width:650px;margin:6px 0 0}
 @media(max-width:640px){.app-install{align-items:flex-start;flex-direction:column}}
 @media(display-mode:standalone){body{padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}}
+
+/* Full-product studio photography: show the entire item in catalog cards. */
+.product-image img[src$="-photo.png"]{aspect-ratio:1;object-fit:contain}
+.category-card img[src$="-photo.png"]{object-fit:cover;border-radius:12px}
+.floating-product[src$="-photo.png"]{border-radius:28px;box-shadow:0 25px 70px #07041055}
+.gallery-main img[src$="-photo.png"]{border-radius:20px;aspect-ratio:1;object-fit:contain}
+
+/* Individual catalog cutouts have a neutral backdrop and remain fully visible. */
+.product-image img[src*="catalog-"],.gallery-main img[src*="catalog-"],.quick-content img[src*="catalog-"]{background:#edeaf2;object-fit:contain;padding:16px;aspect-ratio:1}
