@@ -9,6 +9,6 @@ if (chartSource && window.Chart) {
     options: {responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {y: {beginAtZero: true}, x: {grid: {display: false}}}}
   });
   make('revenue-chart', 'line', d.months, d.revenue, 'Revenue (PHP)', '#a78bfa');
-  make('orders-chart', 'bar', d.months, d.orders, 'Orders', '#5bceef');
+  make('orders-chart', 'bar', d.months, d.orders, 'Orders', '#c4a0ff');
   make('products-chart', 'bar', d.products, d.quantities, 'Units ordered', '#a78bfa');
 }

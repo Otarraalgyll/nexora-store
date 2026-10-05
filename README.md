@@ -61,3 +61,11 @@ For a live installation, set `APP_ENV=production`, configure PHP's mail transpor
 ## Checks
 
 Syntax-check PHP files with `php -l`. The `tests/integration.php` and `tools/create-test-db.php` scripts support isolated integration testing; use a new database name ending in `_test` and review their instructions before running. Never run integration tests against a live store database.
+
+## Install as a phone app (PWA)
+
+Open the store in Chrome on Android and choose **Add to Home screen → Install**, or use **Install Nexora** in the footer when Chrome offers it. On iPhone, open in Safari and use **Share → Add to Home Screen**. The app retains the same accounts, cart and backend as the website.
+
+Installation requires HTTPS on a hosted site. Local development at `http://127.0.0.1:8080` also works; keep PHP and MySQL running in Termux to use that local app. A local installation does not make the store available to other phones. GitHub stores the code but does not host this PHP/MySQL backend.
+
+The service worker caches only a public offline notice. Live products, accounts, carts, payments and orders require a connection to the server. Purchases are never queued or replayed offline. The manifest and service-worker URLs are relative to the installation, supporting both the server root and XAMPP's `/nexora-store/` folder.

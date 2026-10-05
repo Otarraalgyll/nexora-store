@@ -110,7 +110,8 @@
     const buttons = Array.from(form.querySelectorAll('button')).filter(b => !b.disabled);
     buttons.forEach(b => { b.disabled = true; b.classList.add('is-loading'); });
     try {
-      const response = await fetch(form.action, {method: 'POST', body, headers: {'X-Requested-With': 'XMLHttpRequest'}});
+      // Controls named action shadow form.action; read the HTML attribute instead.
+      const response = await fetch(form.getAttribute('action'), {method: 'POST', credentials: 'same-origin', body, headers: {'X-Requested-With': 'XMLHttpRequest'}});
       const data = await response.json();
       if (data.redirect) { location.assign(data.redirect); return; }
       if (!response.ok || !data.ok) throw new Error(data.message || 'Unable to save. Try again.');
