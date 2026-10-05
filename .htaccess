@@ -1,0 +1,11 @@
+Options -Indexes
+DirectoryIndex index.php
+# Source, credentials, logs and development helpers must never be downloaded.
+<FilesMatch "(?i)(^\.|\.(sql|md|log|ini|env|zip|json|sh)$)">
+  Require all denied
+</FilesMatch>
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

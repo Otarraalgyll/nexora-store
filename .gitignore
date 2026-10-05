@@ -1,0 +1,16 @@
+/config/local.php
+/storage/*
+!/storage/.htaccess
+!/storage/.gitkeep
+/uploads/products/*
+!/uploads/products/.htaccess
+!/uploads/products/.gitkeep
+/uploads/categories/*
+!/uploads/categories/.htaccess
+!/uploads/categories/.gitkeep
+*.zip
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store

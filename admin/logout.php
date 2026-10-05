@@ -1,0 +1,1 @@
+<?php require dirname(__DIR__).'/includes/functions.php'; if($_SERVER['REQUEST_METHOD']!=='POST') { http_response_code(405); exit('POST required.'); } check_csrf(); unset($_SESSION['admin_id']); session_regenerate_id(true); $_SESSION['csrf']=bin2hex(random_bytes(32)); go('admin/login.php');
